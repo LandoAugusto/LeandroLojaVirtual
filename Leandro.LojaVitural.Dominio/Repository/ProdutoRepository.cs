@@ -17,7 +17,7 @@ namespace Leandro.LojaVitural.Dominio.Repository
 
             get
             {
-                return _context.Produto;
+                return _context.Produtos;
 
             }
         }

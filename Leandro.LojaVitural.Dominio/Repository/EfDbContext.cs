@@ -11,7 +11,7 @@ namespace Leandro.LojaVitural.Dominio.Repository
 {
     public class EfDbContext : DbContext
     {
-        public DbSet<Produto> Produto { get; set; }
+        public DbSet<Produto> Produtos{ get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

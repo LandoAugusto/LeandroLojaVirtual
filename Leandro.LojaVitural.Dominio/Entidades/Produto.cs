@@ -16,7 +16,7 @@ namespace Leandro.LojaVitural.Dominio.Entidades
 
         public Decimal Preco { get; set; }
 
-        public int Categoria { get; set; }
+        public string Categoria { get; set; }
 
     }
 }
