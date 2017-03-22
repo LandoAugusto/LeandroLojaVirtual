@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Leandro.LojaVitural.Dominio.Repository;
+using Leandro.LojaVirtual.Web.Models;
 
 namespace Leandro.LojaVirtual.Web.Controllers
 {
@@ -13,16 +14,34 @@ namespace Leandro.LojaVirtual.Web.Controllers
 
         int produtoPorPagina = 5;
 
+
         // GET: Vitrine
         public ActionResult ListarPaginaProduto(int pagina = 1)
         {
+
             _repository = new ProdutoRepository();
-            var produtos = _repository.Produtos                                
+
+
+            ProdutosViewModel model = new ProdutosViewModel()
+            {
+
+                Produtos = _repository.Produtos
                                 .OrderBy(p => p.Descricao)
                                 .Skip((pagina - 1) * produtoPorPagina)
-                                .Take(produtoPorPagina);
+                                .Take(produtoPorPagina),
 
-            return View(produtos);
+                Paginacao = new Paginacao
+                {
+
+                    PaginaAtual = pagina,
+                    ItensPorPagina = produtoPorPagina,
+                    ItensTotal = _repository.Produtos.Count()
+
+                }
+            };
+
+            return View(model);
+
         }
     }
 }
