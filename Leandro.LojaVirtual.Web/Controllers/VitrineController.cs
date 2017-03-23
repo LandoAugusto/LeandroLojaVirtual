@@ -20,8 +20,6 @@ namespace Leandro.LojaVirtual.Web.Controllers
         {
 
             _repository = new ProdutoRepository();
-
-
             ProdutosViewModel model = new ProdutosViewModel()
             {
 
@@ -32,11 +30,9 @@ namespace Leandro.LojaVirtual.Web.Controllers
 
                 Paginacao = new Paginacao
                 {
-
                     PaginaAtual = pagina,
                     ItensPorPagina = produtoPorPagina,
                     ItensTotal = _repository.Produtos.Count()
-
                 }
             };
 
