@@ -4,24 +4,24 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Leandro Loja Virtual</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" type="text/css" />
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top " role="navigation">
+    <div class="navbar navbar-inverse " role="navigation">
         <a class="navbar-brand" href="#"> Leandro Loja Virtual - Seu esporte é aqui</a>
     </div>
     <div class="row panel">
-        <div id="categorias" class="row col-xs-3">
-                Minhas categorias
+        <div id="categorias" class="row col-xs-3" style="margin-left:0px;margin-right:0px">
+            @Html.Action("Menu", "Categoria")
         </div>
-
-        <div id="categorias" class="row col-xs-8">
-            @RenderBody();
+        <div id="produtos" class="row col-xs-8">
+            @RenderBody()
         </div>
-    </div>
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+    </div>    
 </body>
 </html>

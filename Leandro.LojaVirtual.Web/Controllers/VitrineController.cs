@@ -16,14 +16,14 @@ namespace Leandro.LojaVirtual.Web.Controllers
 
 
         // GET: Vitrine
-        public ActionResult ListarPaginaProduto(int pagina = 1)
+        public ActionResult ListarPaginaProduto(string categoria,int pagina = 1)
         {
-
-            _repository = new ProdutoRepository();
+                _repository = new ProdutoRepository();
             ProdutosViewModel model = new ProdutosViewModel()
             {
-
+                
                 Produtos = _repository.Produtos
+                                .Where(c => categoria == null || c.Categoria == categoria)
                                 .OrderBy(p => p.Descricao)
                                 .Skip((pagina - 1) * produtoPorPagina)
                                 .Take(produtoPorPagina),
@@ -32,12 +32,13 @@ namespace Leandro.LojaVirtual.Web.Controllers
                 {
                     PaginaAtual = pagina,
                     ItensPorPagina = produtoPorPagina,
-                    ItensTotal = _repository.Produtos.Count()
-                }
+                    ItensTotal = _repository.Produtos.Where(c => categoria == null || c.Categoria == categoria).Count()
+                },
+
+                CategoriaAtual = categoria
             };
 
             return View(model);
-
         }
     }
 }
