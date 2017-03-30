@@ -64,5 +64,10 @@ namespace Leandro.LojaVirtual.Web.Controllers
                 ReturnUrl = returnUrl
             });
         }
+
+        public ViewResult FecharPedido()
+        {
+            return View(new Pedido());
+        }
     }
 }
