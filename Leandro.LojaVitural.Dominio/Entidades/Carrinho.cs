@@ -33,7 +33,7 @@ namespace Leandro.LojaVitural.Dominio.Entidades
         //Remover
         public void RemoverItem(Produto produto)
         {
-            itensCarrinho.RemoveAll(a => a.Produto.Equals(produto.ProdutoId));
+            itensCarrinho.RemoveAll(a => a.Produto.ProdutoId.Equals(produto.ProdutoId));
         }
 
         //Obter valor total

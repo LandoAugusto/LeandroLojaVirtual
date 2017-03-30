@@ -44,6 +44,8 @@ namespace Leandro.LojaVirtual.Web.Controllers
 
         public RedirectToRouteResult Remover(int produtoID, string returnUrl)
         {
+            _repositorio = new ProdutoRepository(); 
+
             Produto produto = _repositorio.Produtos.FirstOrDefault(x => x.ProdutoId == produtoID);
 
             if (produto != null)
