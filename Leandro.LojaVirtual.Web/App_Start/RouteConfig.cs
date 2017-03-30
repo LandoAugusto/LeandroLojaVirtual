@@ -13,52 +13,21 @@ namespace Leandro.LojaVirtual.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //Default
+            routes.MapRoute(null, "{controller}/{action}");
 
             // Pagina 1
-            routes.MapRoute(null, "", new
-            {
-                controller = "Vitrine",
-                Action = "ListarPaginaProuto",
-                categoria = (string)null,
-                pagina = 1
-            }
-              );
+            routes.MapRoute(null,  "{controller}/{action}", new { controller = "Vitrine", action = "ListarPaginaProuto", categoria = (string)null, pagina = 1 });
 
             // Pagina 2
-            routes.MapRoute(
-                null,
-                "Pagina{pagina}",
-                new
-                {
-                    controller = "Vitrine",
-                    Action = "ListarPaginaProuto",
-                    categoria = (string)null
-                },
-                        new { pagina = @"\d+" }
+            routes.MapRoute(null, "Pagina{pagina}", new { controller = "Vitrine", Action = "ListarPaginaProuto", categoria = (string)null }, new { pagina = @"\d+" }
                 );
 
             // Pagina 3
-            routes.MapRoute(null, "{categoria}",
-                new
-                {
-                    controller = "Vitrine",
-                    action = "ListarPaginaProduto",
-                    pagina = 1
-                });
+            routes.MapRoute(null, "{categoria}", new { controller = "Vitrine", action = "ListarPaginaProduto", pagina = 1 });
 
             // Pagina 4
-            routes.MapRoute(null, "{categoria}/Pagina{pagina}",
-                new
-                {
-                    controller = "Vitrine",
-                    action = "ListarPaginaProduto",
-                },
-                new { pagina = @"\d+" }
-                );
-
-
-            //Default
-            routes.MapRoute(null, "{controller}/{action}");
+            routes.MapRoute(null, "{categoria}/Pagina{pagina}", new { controller = "Vitrine", action = "ListarPaginaProduto", }, new { pagina = @"\d+" });
         }
     }
 }

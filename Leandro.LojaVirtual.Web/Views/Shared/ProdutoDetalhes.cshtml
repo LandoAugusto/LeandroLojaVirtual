@@ -1,7 +1,21 @@
 ﻿@model Leandro.LojaVitural.Dominio.Entidades.Produto
 
 <div class="well">
+
+    <div>
+        <h3><span class="pull-right label label-primary"> @Model.Preco.ToString("c") </span></h3>   
+    </div>
+
     <h3><strong>@Model.Nome</strong></h3>
-    <h3><span class="pull-right label label-primary"> @Model.Preco.ToString("c") </span></h3>
-    <h3> <span class="lead">@Model.Descricao </span></h3>
+
+    @using (Html.BeginForm("Adicionar", "Carrinho"))
+    {
+        <div class="pull-right">
+
+            @Html.HiddenFor(x => x.ProdutoId)
+            @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+            <input type="submit" value="Comprar" class="btn btn-success" />
+        </div>
+    }
+    <h3> <span class="lead">@Model.Descricao </span></h3>   
 </div>  
